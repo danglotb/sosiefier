@@ -179,8 +179,8 @@ public class InputConfiguration {
      *
      * @return
      */
-    public String getResultPath() {
-        return prop.getProperty("result", prop.getProperty("outputDirectory", ""));
+    public String getOutputDirectory() {
+        return prop.getProperty("outputDirectory", "output");
     }
 
     /**
@@ -245,10 +245,8 @@ public class InputConfiguration {
         //tempory directory
         prop.setProperty("tmpDir", "tmpDir");
 
-        //directory for output (ex sosie)
+        //directory for output
         prop.setProperty("outputDirectory", "output");
-        //directory for output result (ex sosie)
-        prop.setProperty("result", "output_diversify");
 
         prop.setProperty("sosieOnMultiProject", "false");
         prop.setProperty("timeOut", "-1");
@@ -291,7 +289,7 @@ public class InputConfiguration {
      */
     public boolean validate() {
         checkPath("Project path", getProjectPath(), true);
-        checkPath("Source path", getProjectPath() + "/"+ getResultPath() , true);
+        checkPath("Source path", getProjectPath() + "/"+ getOutputDirectory() , true);
         checkPath("Previous transformation path", getPreviousTransformationPath(), false);
         checkPath("Coverage dir", getCoverageDir(), false);
         checkPath("Root dir", getRootPath(), false);
